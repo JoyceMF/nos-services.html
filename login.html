@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <form class="form">
+      <p id="head-title">Login</p>
+      
+      <div class="login-field">
+        <i class="input-icon fa-solid fa-user"></i>
+        <input type="text" class="input-field" placeholder="Username" autocomplete="off" required> 
+      </div>
+  
+      <div class="login-field">
+        <i class="input-icon fa-solid fa-lock"></i>
+        <input type="password" class="input-field" placeholder="Password" required> 
+      </div>
+  
+      <div class="btn">
+        <button type="submit" class="button-1">Login</button>
+        <button type="button" class="button-2" onclick="window.location.href='sign up.html'">Sign up</button>
+      </div>
+  
+      <button class="button3">Forgot Password</button>
+    </form>
+  </div>
+
+  <script>
+    document.querySelector(".form").addEventListener("submit", function (e) {
+      e.preventDefault(); 
+      
+      const username = document.querySelector("input[type='text']").value.trim();
+      const password = document.querySelector("input[type='password']").value;
+      const user = JSON.parse(localStorage.getItem(`user_${username}`));
+
+      if (user && user.password === password) {
+        alert("Connexion réussie !");
+        window.location.href = "Index 2.html"; 
+      } else {
+        alert("Nom d'utilisateur ou mot de passe incorrect.");
+      }
+    });
+  </script>
+
+</body>
+</html>
